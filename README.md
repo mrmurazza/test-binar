@@ -6,7 +6,8 @@ and password) is in accordance with that in `application.conf` on line [165-1675
 Do not worry about creating database table, Play Evolutions will handle it. But you might need to re-run the app 
 if not redirected to the app directly after applying the evolutions scripts.
 4. Run `$ ./gradlew runPlayBinary` to run the application.
-5. For further explanation about Play Framework, please see the documentation at https://www.playframework.com/documentation/latest/Home
+5. The application is ready on `localhost:9000` (notes: you can check available routes on routes [file](/conf/routes)) 
+6. For further explanation about Play Framework, please see the documentation at https://www.playframework.com/documentation/latest/Home
 
 # Project Structure 
 
