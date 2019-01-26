@@ -37,7 +37,8 @@ public class UserManager {
 
 
     public Optional<User> login(String email, String password){
-        return userDAO.getByEmailAndPassword(email, password);
+        String digestedPassword = DigestUtils.sha256Hex(password);
+        return userDAO.getByEmailAndPassword(email, digestedPassword);
     }
 
     public User signup(UserSignupRequest request) throws ListException {

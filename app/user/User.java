@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -38,8 +39,8 @@ public class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    @Column(name = "updatedAt")
-    @JsonProperty("updatedAt")
+    @Column(name = "updated_at")
+    @JsonProperty("updated_at")
     private Date updatedAt;
 
     public User(){
@@ -50,6 +51,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.passwordDigest = passwordDigest;
+        this.accessToken = UUID.randomUUID().toString();
     }
 
     public long getId() {

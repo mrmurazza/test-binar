@@ -5,7 +5,7 @@ import com.google.inject.ImplementedBy;
 import java.util.List;
 import java.util.Optional;
 
-@ImplementedBy(ProductDAO.class)
+@ImplementedBy(ProductSqlDAO.class)
 public interface IProductDAO {
     Product persist(Product product);
     Optional<Product> getById(long id);
