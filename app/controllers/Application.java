@@ -2,7 +2,6 @@ package controllers;
 
 import actions.LoggedIn;
 import exceptions.ListException;
-import javafx.util.Pair;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -19,6 +18,8 @@ import user.UserManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Singleton
@@ -32,9 +33,8 @@ public class Application extends Controller {
         this.userManager = userManager;
     }
 
-    @Security.Authenticated(LoggedIn.class)
     public Result test(){
-        return ok("Hello There");
+        return ok(Json.toJson(createSingleEntryMap("message", "Hello there")));
     }
 
     public Result signupPost(){
@@ -58,7 +58,7 @@ public class Application extends Controller {
         Optional<User> user = userManager.login(email, password);
 
         if (user.isPresent())
-            return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(new Pair<>("access_token", user.get().getAccessToken()))));
+            return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(createSingleEntryMap("access_token", user.get().getAccessToken()))));
 
         return badRequest(Json.toJson(BaseJSONResponse.initSingleErrorResponse("Login error, please retry!")));
     }
@@ -118,7 +118,13 @@ public class Application extends Controller {
             return internalServerError(Json.toJson(BaseJSONResponse.initErrorResponse(e.getErrors())));
         }
 
-        BaseJSONResponse response = BaseJSONResponse.initSuccessResponse(new Pair<>("message", id + " deleted"));
+        BaseJSONResponse response = BaseJSONResponse.initSuccessResponse(createSingleEntryMap("message", id + " deleted"));
         return ok(Json.toJson(response));
+    }
+
+    private static <K, V> Map<K,V> createSingleEntryMap(K key, V value){
+        Map<K,V> map = new HashMap<>();
+        map.put(key, value);
+        return map;
     }
 }
