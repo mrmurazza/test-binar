@@ -3,10 +3,9 @@ GET     /v2/products        controllers.Application.test
 
 POST    /auth/login         controllers.Application.login
 POST    /auth/signup        controllers.Application.signup
-GET     /auth/logout        controllers.Application.logout
 
-GET     /v1/products        controllers.Application.getData(id: java.lang.Long ?= null)
-POST    /v1/products        controllers.Application.createData
-PUT     /v1/products        controllers.Application.updateData(id: java.lang.Long)
-DELETE  /v1/products        controllers.Application.deleteData(id: java.lang.Long)
+GET     /v1/products        controllers.Application.getProducts(id: java.lang.Long ?= null)
+POST    /v1/products        controllers.Application.saveNewProduct
+PUT     /v1/products        controllers.Application.updateProduct(id: java.lang.Long)
+DELETE  /v1/products        controllers.Application.deleteProduct(id: java.lang.Long)
 
