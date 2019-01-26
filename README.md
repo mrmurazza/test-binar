@@ -2,7 +2,7 @@
 1. Git clone.
 2. Make sure you have Java SE 1.8 or higher installed and have set your `$JAVA_HOME` to it.
 3. Make sure you have MySQL server installed and your authentication (database name, username, 
-and password) is in accordance with that in `application.conf` on line [165-1675](/conf/application.conf#L60-62). 
+and password) is in accordance with that in `application.conf` on line [60-62](/conf/application.conf#L60-62). 
 Do not worry about creating database table, Play Evolutions will handle it. But you might need to re-run the app 
 if not redirected to the app directly after applying the evolutions scripts.
 4. Run `$ ./gradlew runPlayBinary` to run the application.
