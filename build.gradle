@@ -25,6 +25,7 @@ dependencies {
     play "com.typesafe.play:play-guice_$scalaVersion:$playVersion"
     play "com.typesafe.play:play-logback_$scalaVersion:$playVersion"
     play "com.typesafe.play:play-java-jpa_$scalaVersion:$playVersion"
+    play "com.typesafe.play:play-jdbc-evolutions_$scalaVersion:$playVersion"
 
     play "org.hibernate:hibernate-entitymanager:4.3.10.Final"
     play "mysql:mysql-connector-java:5.1.35"
