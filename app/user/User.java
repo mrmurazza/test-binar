@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import utils.Utils;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -34,13 +35,13 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "created_at")
-    @JsonProperty("created_at")
+    @JsonIgnore
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
     @Column(name = "updated_at")
-    @JsonProperty("updated_at")
+    @JsonIgnore
     private Date updatedAt;
 
     public User(){
@@ -80,5 +81,15 @@ public class User {
 
     public Date getUpdatedAt() {
         return updatedAt;
+    }
+
+    @JsonProperty("created_at")
+    public String getPrettyCreatedAt(){
+        return Utils.formatToPrettyDate(createdAt);
+    }
+
+    @JsonProperty("updated_at")
+    public String getPrettyUpdatedAt(){
+        return Utils.formatToPrettyDate(updatedAt);
     }
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import actions.LoggedIn;
 import exceptions.ListException;
+import play.db.jpa.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -19,6 +20,7 @@ import user.UserManager;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -37,6 +39,7 @@ public class Application extends Controller {
         return ok(Json.toJson(createSingleEntryMap("message", "Hello there")));
     }
 
+    @Transactional
     public Result signupPost(){
         UserSignupRequest request = UserSignupRequest.initFromFormRequest(new FormRequest(request()));
         User user;
@@ -50,6 +53,7 @@ public class Application extends Controller {
         return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(user)));
     }
 
+    @Transactional
     public Result login(){
         JsonRequest request = new JsonRequest(request());
         String email = request.getOptionalObject("email", String.class).orElse(null);
@@ -63,24 +67,31 @@ public class Application extends Controller {
         return badRequest(Json.toJson(BaseJSONResponse.initSingleErrorResponse("Login error, please retry!")));
     }
 
+    @Transactional
+    @Security.Authenticated(LoggedIn.class)
+    public Result getAllProducts(){
+        User user = userManager.getCurrentUser().get();
+        List<Product> result = productManager.getByUserId(user.getId());
+
+        return  ok(Json.toJson(BaseJSONResponse.initSuccessResponse(result)));
+    }
+
+    @Transactional
     @Security.Authenticated(LoggedIn.class)
     public Result getProducts(Long id){
         User user = userManager.getCurrentUser().get();
 
-        Object result;
-        if (id == null) {
-            result = productManager.getByUserId(user.getId());
-        } else {
-            try {
-                result = productManager.getValidatedProductById(id, user.getId());
-            } catch (ListException e){
-                return badRequest(Json.toJson(BaseJSONResponse.initErrorResponse(e.getErrors())));
-            }
+        Product result;
+        try {
+            result = productManager.getValidatedProductById(id, user.getId());
+        } catch (ListException e){
+            return badRequest(Json.toJson(BaseJSONResponse.initErrorResponse(e.getErrors())));
         }
 
         return  ok(Json.toJson(BaseJSONResponse.initSuccessResponse(result)));
     }
 
+    @Transactional
     @Security.Authenticated(LoggedIn.class)
     public Result saveNewProduct(){
         ProductRequest request = ProductRequest.initFromJsonRequest(new JsonRequest(request()));
@@ -95,6 +106,7 @@ public class Application extends Controller {
         return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(product)));
     }
 
+    @Transactional
     @Security.Authenticated(LoggedIn.class)
     public Result updateProduct(Long id){
         ProductRequest request = ProductRequest.initFromJsonRequest(new JsonRequest(request()));
@@ -109,6 +121,7 @@ public class Application extends Controller {
         return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(product)));
     }
 
+    @Transactional
     @Security.Authenticated(LoggedIn.class)
     public Result deleteProduct(Long id){
         User user = userManager.getCurrentUser().get();

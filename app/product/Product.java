@@ -1,8 +1,10 @@
 package product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import utils.Utils;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +18,7 @@ public class Product {
     private long id;
 
     @Column(name = "user_id", nullable = false)
+    @JsonIgnore
     private long userId;
 
     @Column(name = "name", nullable = false)
@@ -28,17 +31,16 @@ public class Product {
     @JsonProperty("imageurl")
     private String imageUrl;
 
-
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "created_at")
-    @JsonProperty("created_at")
+    @JsonIgnore
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
-    @Column(name = "updatedAt")
-    @JsonProperty("updatedAt")
+    @Column(name = "updated_at")
+    @JsonIgnore
     private Date updatedAt;
 
     public Product(){
@@ -90,5 +92,14 @@ public class Product {
 
     public Date getUpdatedAt() {
         return updatedAt;
+    }
+    @JsonProperty("created_at")
+    public String getPrettyCreatedAt(){
+        return Utils.formatToPrettyDate(createdAt);
+    }
+
+    @JsonProperty("updated_at")
+    public String getPrettyUpdatedAt(){
+        return Utils.formatToPrettyDate(updatedAt);
     }
 }

@@ -56,9 +56,9 @@ public class ProductManager {
         Product product = getValidatedProductById(id, userId);
         validateUpdateRequest(request);
 
-        product.setName(request.getName().get());
-        product.setPrice(request.getPrice().get());
-        product.setImageUrl(request.getImageurl().get());
+        request.getName().ifPresent(product::setName);
+        request.getPrice().ifPresent(product::setPrice);
+        request.getImageurl().ifPresent(product::setImageUrl);
 
         return productDAO.persist(product);
     }
@@ -66,7 +66,7 @@ public class ProductManager {
     private void validateUpdateRequest(ProductRequest request) throws ListException {
         ListException errors = new ListException();
 
-        if (!request.getName().isPresent() && request.getPrice().isPresent() && !request.getImageurl().isPresent())
+        if (!request.getName().isPresent() && !request.getPrice().isPresent() && !request.getImageurl().isPresent())
             throw new ListException("Your request is empty, please fill at least one between name, " +
                     "price, or image url of this product you wish to update");
 

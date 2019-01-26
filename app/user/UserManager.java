@@ -59,7 +59,7 @@ public class UserManager {
         if (!request.getEmail().isPresent())
             errors.add("Please input your email");
 
-        if (isEmailFormatValid(request.getEmail().get()))
+        if (!isEmailFormatValid(request.getEmail().get()))
             errors.add("Email format is invalid, please recheck your email");
 
         try {
