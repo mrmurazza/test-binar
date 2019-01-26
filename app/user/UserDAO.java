@@ -24,4 +24,14 @@ public class UserDAO implements IUserDAO {
     public Optional<User> getByAccessToken(String accessToken){
         return Optional.empty();
     }
+
+    @Override
+    public Optional<User> getByEmail(String email){
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<User> getByEmailAndPassword(String email, String password){
+        return Optional.empty();
+    }
 }

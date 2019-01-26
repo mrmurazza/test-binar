@@ -10,6 +10,7 @@ import user.UserManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.Collections;
 import java.util.Optional;
 
 @Singleton
@@ -31,8 +32,7 @@ public class LoggedIn extends Security.Authenticator {
 
     @Override
     public Result onUnauthorized(Http.Context ctx) {
-
-        return unauthorized(Json.toJson(new BaseJSONResponse("ERROR", null, )));
+        return unauthorized(Json.toJson(BaseJSONResponse.initSingleErrorResponse("ERROR")));
     }
 
 }

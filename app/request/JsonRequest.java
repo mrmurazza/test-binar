@@ -18,7 +18,7 @@ public class JsonRequest {
         nodeJson = NullNode.instance;
     }
 
-    protected <T> Optional<T> getOptionalObject(String key, Class<T> type) {
+    public <T> Optional<T> getOptionalObject(String key, Class<T> type) {
         JsonNode object = nodeJson.get(key);
 
         if (object == null || object == NullNode.instance) {

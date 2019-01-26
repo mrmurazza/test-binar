@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface IUserDAO {
     User persist(User user);
     Optional<User> getByAccessToken(String accessToken);
+    Optional<User> getByEmail(String email);
+    Optional<User> getByEmailAndPassword(String email, String password);
 }

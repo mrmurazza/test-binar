@@ -2,7 +2,7 @@
 GET     /v2/products        controllers.Application.test
 
 POST    /auth/login         controllers.Application.login
-POST    /auth/signup        controllers.Application.signup
+POST    /auth/signup        controllers.Application.signupPost
 
 GET     /v1/products        controllers.Application.getProducts(id: java.lang.Long ?= null)
 POST    /v1/products        controllers.Application.saveNewProduct

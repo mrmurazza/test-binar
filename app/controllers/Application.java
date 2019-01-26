@@ -9,17 +9,16 @@ import play.mvc.Result;
 import play.mvc.Security;
 import product.Product;
 import product.ProductManager;
+import request.FormRequest;
 import request.JsonRequest;
 import request.ProductRequest;
+import request.UserSignupRequest;
 import response.BaseJSONResponse;
 import user.User;
 import user.UserManager;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Singleton
@@ -38,12 +37,30 @@ public class Application extends Controller {
         return ok("Hello There");
     }
 
-    public Result signup(){
-        return ok();
+    public Result signupPost(){
+        UserSignupRequest request = UserSignupRequest.initFromFormRequest(new FormRequest(request()));
+        User user;
+
+        try {
+            user = userManager.signup(request);
+        } catch (ListException e){
+            return badRequest(Json.toJson(BaseJSONResponse.initErrorResponse(e.getErrors())));
+        }
+
+        return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(user)));
     }
 
     public Result login(){
-        return ok();
+        JsonRequest request = new JsonRequest(request());
+        String email = request.getOptionalObject("email", String.class).orElse(null);
+        String password = request.getOptionalObject("password", String.class).orElse(null);
+
+        Optional<User> user = userManager.login(email, password);
+
+        if (user.isPresent())
+            return ok(Json.toJson(BaseJSONResponse.initSuccessResponse(new Pair<>("access_token", user.get().getAccessToken()))));
+
+        return badRequest(Json.toJson(BaseJSONResponse.initSingleErrorResponse("Login error, please retry!")));
     }
 
     @Security.Authenticated(LoggedIn.class)

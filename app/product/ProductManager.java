@@ -18,6 +18,10 @@ public class ProductManager {
         this.productDAO = productDAO;
     }
 
+    public List<Product> getByUserId(long userId){
+        return productDAO.getByUserId(userId);
+    }
+
     public Product createNewProduct(ProductRequest request, long userId) throws ListException {
         validateCreationRequest(request);
 
@@ -77,10 +81,6 @@ public class ProductManager {
 
         if (!errors.isEmpty())
             throw errors;
-    }
-
-    public List<Product> getByUserId(long userId){
-        return productDAO.getByUserId(userId);
     }
 
     public Product getValidatedProductById(long id, long userId) throws ListException {
