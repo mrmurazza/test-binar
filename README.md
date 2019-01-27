@@ -59,36 +59,36 @@ Authentication:
 
 POST /auth/signup
 
-![](public/images/signup_api_capture.jpg?raw=true "Sign Up API")
+![Signup](public/images/signup_api_capture.jpg?raw=true "Sign Up API")
  
 POST /auth/login
  
-![](public/images/login_api_capture.jpg?raw=true "Log In API")
+![Login](public/images/login_api_capture.jpg?raw=true "Log In API")
 
 Product CRUD:
 
 POST /v1/products
 
 Body Request & Response
-![](public/images/create_product_api_capture.jpg?raw=true "Create Product API")
+![CreateProduct](public/images/create_product_api_capture.jpg?raw=true "Create Product API")
 
 Header Request  
-![](public/images/create_product_api_headers_capture.jpg?raw=true "Create Product API")
+![CreateProductHeaders](public/images/create_product_api_headers_capture.jpg?raw=true "Create Product API")
 
 GET /v1/products
-![](public/images/get_all_product_api_capture.jpg?raw=true "Create Product API")
+![GetAllProducts](public/images/get_all_product_api_capture.jpg?raw=true "Get All Products API")
 
 GET /v1/products/:id
-![](public/images/get_product_api_capture.jpg?raw=true "Create Product API")
+![GetProduct](public/images/get_product_api_capture.jpg?raw=true "Get Product API")
 
 PUT /v1/products/:id
 
 Body Request & Response
-![](public/images/update_product_api_capture.jpg?raw=true "Create Product API")
+![UpdateProduct](public/images/update_product_api_capture.jpg?raw=true "Update Product API")
 
 Header Request  
-![](public/images/update_product_api_headers_capture.jpg?raw=true "Create Product API")
+![UpdateProductHeaders](public/images/update_product_api_headers_capture.jpg?raw=true "Update Product Headers API")
 
 DELETE /v1/products/:id
-![](public/images/delete_api_capture.jpg?raw=true "Create Product API")
+![DeleteProduct](public/images/delete_api_capture.jpg?raw=true "Delete Product API")
 
