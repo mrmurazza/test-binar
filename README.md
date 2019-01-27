@@ -53,3 +53,42 @@ The DAO layers are represented using interface with each has default concrete / 
 The concrete class will be directly implemented using injection by Guice. This practice helps separating business logic and persistence layer. 
 You can add other persistence layer or modify the existing without worrying about making changes in the business logic
 
+# Example of API Usage using Postman
+
+Authentication:
+
+POST /auth/signup
+
+![](public/images/signup_api_capture.jpg?raw=true "Sign Up API")
+ 
+POST /auth/login
+ 
+![](public/images/login_api_capture.jpg?raw=true "Log In API")
+
+Product CRUD:
+
+POST /v1/products
+
+Body Request & Response
+![](public/images/create_product_api_capture.jpg?raw=true "Create Product API")
+
+Header Request  
+![](public/images/create_product_api_headers_capture.jpg?raw=true "Create Product API")
+
+GET /v1/products
+![](public/images/get_all_product_api_capture.jpg?raw=true "Create Product API")
+
+GET /v1/products/:id
+![](public/images/get_product_api_capture.jpg?raw=true "Create Product API")
+
+PUT /v1/products/:id
+
+Body Request & Response
+![](public/images/update_product_api_capture.jpg?raw=true "Create Product API")
+
+Header Request  
+![](public/images/update_product_api_headers_capture.jpg?raw=true "Create Product API")
+
+DELETE /v1/products/:id
+![](public/images/delete_api_capture.jpg?raw=true "Create Product API")
+
