@@ -1,3 +1,6 @@
+# Notes
+Assessment answers can be found in [this file](ASSESSMENT_ANSWER.md).
+
 # Quickstart Guide to Set up Dev Workspace
 1. Git clone.
 2. Make sure you have Java SE 1.8 or higher installed and have set your `$JAVA_HOME` to it.
