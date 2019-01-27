@@ -59,36 +59,36 @@ Authentication:
 
 POST /auth/signup
 
-![Signup](public/images/signup_api_capture.jpg?raw=true "Sign Up API")
+![Signup](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/signup_api_capture.JPG "Sign Up API")
  
 POST /auth/login
  
-![Login](public/images/login_api_capture.jpg?raw=true "Log In API")
+![Login](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/login_api_capture.JPG "Log In API")
 
 Product CRUD:
 
 POST /v1/products
 
 Body Request & Response
-![CreateProduct](public/images/create_product_api_capture.jpg?raw=true "Create Product API")
+![CreateProduct](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/create_product_api_capture.JPG "Create Product API")
 
 Header Request  
-![CreateProductHeaders](public/images/create_product_api_headers_capture.jpg?raw=true "Create Product API")
+![CreateProductHeaders](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/create_product_api_headers_capture.JPG "Create Product API")
 
 GET /v1/products
-![GetAllProducts](public/images/get_all_product_api_capture.jpg?raw=true "Get All Products API")
+![GetAllProducts](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/get_all_product_api_capture.JPG "Get All Products API")
 
 GET /v1/products/:id
-![GetProduct](public/images/get_product_api_capture.jpg?raw=true "Get Product API")
+![GetProduct](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/get_product_api_capture.JPG "Get Product API")
 
 PUT /v1/products/:id
 
 Body Request & Response
-![UpdateProduct](public/images/update_product_api_capture.jpg?raw=true "Update Product API")
+![UpdateProduct](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/update_product_api_capture.JPG "Update Product API")
 
 Header Request  
-![UpdateProductHeaders](public/images/update_product_api_headers_capture.jpg?raw=true "Update Product Headers API")
+![UpdateProductHeaders](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/update_product_api_headers_capture.JPG "Update Product Headers API")
 
 DELETE /v1/products/:id
-![DeleteProduct](public/images/delete_api_capture.jpg?raw=true "Delete Product API")
+![DeleteProduct](https://raw.githubusercontent.com/mrmurazza/test-binar/master/public/images/delete_api_capture.JPG "Delete Product API")
 
